@@ -6,4 +6,6 @@ else
     mkdir guacamole-config    
 fi
 
-### docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql
+# Run the guacamole client to generate a database configuration
+# script for mysql
+docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > ./guacamole-config/initdb.sql
