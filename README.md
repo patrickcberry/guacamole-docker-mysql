@@ -13,8 +13,17 @@ The following software needs to be installed,
 - Docker
 
 ## Usage
+Clone the respository and change directory,
+```
+git clone https://github.com/patrickcberry/guacamole-docker-mysql.git
+cd guacamole-docker-mysql
+```
 
 ## mySQL
+Run the setup script,
+```
+sh ./setup.sh
+```
 
 ## Docker Compose
 

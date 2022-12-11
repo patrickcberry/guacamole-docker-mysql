@@ -1,3 +1,5 @@
+# Create the config folder
+
 if [ -d "./guacamole-config" ] 
 then
     echo "Folder already exists"
