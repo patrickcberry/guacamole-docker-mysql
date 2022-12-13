@@ -35,7 +35,9 @@ then
     echo "$file found."
     . $file
 
-    echo "Docker Password " $docker_password
+    echo "Docker Password    " $docker_password
+    echo "mySQL Password     " $mysql_password
+    echo "Guacamole Password " $guacamole_password
 else
     echo "$file not found."
 fi
