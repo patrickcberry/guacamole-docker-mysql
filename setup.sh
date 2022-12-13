@@ -35,7 +35,7 @@ then
     echo "$file found."
     . $file
 
-    echo "Docker Password " $docker-password
+    echo "Docker Password " $docker_password
 else
     echo "$file not found."
 fi
