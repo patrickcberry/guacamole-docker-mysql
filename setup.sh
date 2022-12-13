@@ -8,6 +8,7 @@ else
     mkdir guacamole-config    
 fi
 
+# TODO: Install Docker if not present
 # Check is Docker is installed
 if [ -x "$(command -v docker)" ]; then
     echo "Update docker"
@@ -18,9 +19,9 @@ else
 fi
 
 # Download required Docker images
-# docker pull guacamole/guacamole 
-# docker pull guacamole/guacd 
-# docker pull mysql/mysql-server
+docker pull guacamole/guacamole 
+docker pull guacamole/guacd 
+docker pull mysql/mysql-server
 
 # Run the guacamole client to generate a database configuration
 # script for mysql
