@@ -37,7 +37,7 @@ then
 
     echo "Docker Password    " $docker_password
     echo "mySQL Password     " $mysql_password
-    echo "Guacamole Password " $guacamole_password
+    echo "Guacamole Password " $guacadmin_password
 else
     echo "$file not found."
 fi
