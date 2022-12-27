@@ -19,15 +19,17 @@ else
 fi
 
 # Download required Docker images
-docker pull guacamole/guacamole 
-docker pull guacamole/guacd 
-docker pull mysql/mysql-server
+if false == true; then 
+    docker pull guacamole/guacamole 
+    docker pull guacamole/guacd 
+    docker pull mysql/mysql-server
+fi
 
 # Run the guacamole client to generate a database configuration
 # script for mysql
 docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > ./guacamole-config/initdb.sql
 
-# TODO: Read passords from secrets file
+# Read passords from secrets file
 file="./secrets.properities"
 
 if [ -f "$file" ]
@@ -41,3 +43,10 @@ then
 else
     echo "$file not found."
 fi
+
+# Generate a mySQL one-time password and save to a temporary file
+
+docker run --name ras-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
+docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
+
+
