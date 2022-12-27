@@ -67,7 +67,7 @@ while true; do
     docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
     otpw_file_size=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')    
 
-    if (( $otpw_file_size == 0 )) then
+    if ["$otpw_file_size" -eq "0" ] then
         echo "Processing ..."
         sleep 10
     else
