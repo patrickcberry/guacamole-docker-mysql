@@ -45,8 +45,23 @@ else
 fi
 
 # Generate a mySQL one-time password and save to a temporary file
-
 docker run --name ras-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
+
+# takes some time for mySQL to initalise. Need to test the log until we can see the
+# one time password has been written
+
+while true; do
+    result = $(docker logs ras-mysql | grep -e "PASSWORD:")
+    echo "DEBUG: Result is $result"
+    if (( $result > 0 )) then
+        echo "Debug: complete"
+        break
+    fi
+    sleep 10
+done
+
+# Extract the onwtime password and save to file
+
 docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
 
 
