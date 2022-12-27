@@ -67,3 +67,28 @@ while true; do
     fi
 
 done
+
+otpw='cat guacamole-config/tmp-mysql-otpw.txt'
+echo "otpw_file_size: $otpw_file_size"
+echo "The OTWP:       $otpw"
+
+# ##############################################
+# Change mySQL root user password
+
+# ##############################################
+# Create Guacamole database
+
+# ##############################################
+# Create Guacamole user
+
+# ##############################################
+# Run the database setup script
+
+# ##############################################
+# Verify db setup
+
+# ##############################################
+# Start GUACD container
+
+# ##############################################
+# Start Guacamole container
