@@ -45,14 +45,19 @@ else
 fi
 
 # Generate a mySQL one-time password and save to a temporary file
+
+echo "Initalising the mySQL server ..."
+echo "This can take some time ... inital wait 20 seconds before testing for OTPW ..."
+
 docker run --name ras-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
 
 # Extract the onwtime password and save to file
 # takes some time for mySQL to initalise. Need to test the log until we can see the
 # one time password has been written
 
+sleep 20
+
 while true; do
-    sleep 10
     docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
     otpw_file_size=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')    
 
@@ -74,6 +79,8 @@ echo "The OTWP:       $otpw"
 
 # ##############################################
 # Change mySQL root user password
+
+docker exec -i ras-mysql mysql -u root -p $otpw <<< ALTER USER 'root'@'localhost' IDENTIFIED BY '$mysql_password';
 
 # ##############################################
 # Create Guacamole database
