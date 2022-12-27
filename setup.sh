@@ -69,7 +69,7 @@ while true; do
 
     echo "otpw_file_size: $otpw_file_size"
 
-    if [$otpw_file_size -eq "0" ]
+    if test $otpw_file_size -eq "0"
     then
         echo "Processing ..."
         sleep 10
