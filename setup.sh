@@ -51,7 +51,7 @@ docker run --name ras-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_P
 # one time password has been written
 
 while true; do
-    result = $(docker logs ras-mysql | grep -e "PASSWORD:")
+    result = $(docker logs ras-mysql | grep -nE "PASSWORD:")
     echo "DEBUG: Result is $result"
     if (( $result > 0 )) then
         echo "Debug: complete"
