@@ -63,15 +63,22 @@ done
 # Extract the onwtime password and save to file
 
 docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
-myfilesize=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')
+myfilesize1=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')
 
-echo "DEBUG: file size: $myfilesize"
+echo "DEBUG: file size: $myfilesize1"
 echo "Sleep 10"
 
-sleep 10 
+sleep 15 
 
 docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
-myfilesize=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')
+myfilesize2=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')
 
-echo "DEBUG: file size: $myfilesize"
+echo "DEBUG: file size: $myfilesize2"
+echo "Sleep 10"
 
+sleep 15 
+
+docker logs ras-mysql | grep -e "PASSWORD:" | sed 's/.*PASSWORD: \(.*\)/\1 /' > guacamole-config/tmp-mysql-otpw.txt
+myfilesize3=$(wc -c "guacamole-config/tmp-mysql-otpw.txt" | awk '{print $1}')
+
+echo "DEBUG: file size: $myfilesize3"
