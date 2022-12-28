@@ -80,7 +80,7 @@ echo "The OTWP:       $otpw"
 # ##############################################
 # Change mySQL root user password
 
-docker exec -i ras-mysql mysql -h localhost --connect-expired-password -u root --password=\""$otpw"\" < ./resetrootpw.sql
+docker exec ras-mysql mysql -h localhost --connect-expired-password -u root --password=\""$otpw"\" < ./resetrootpw.sql
 #docker exec -i ras-mysql mysql --connect-expired-password -u root --password=\""$otpw"\" < \"ALTER USER \'root\'@\'localhost\' IDENTIFIED BY \'"$mysql_password"\'; FLUSH PRIVILEGES; EXIT;\"
 #docker exec -i ras-mysql mysql --connect-expired-password -u root --password="$otpw" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$mysql_password'; FLUSH PRIVILEGES; EXIT;"
 # echo docker exec -i ras-mysql mysql --connect-expired-password -u root --password=\""$otpw"\" -e \"ALTER USER \'root\'@\'localhost\' IDENTIFIED BY \'"$mysql_password"\'; FLUSH PRIVILEGES; EXIT;\"
