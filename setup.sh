@@ -73,7 +73,7 @@ while true; do
 
 done
 
-otpw="$(cat guacamole-config/tmp-mysql-otpw.txt)"
+otpw="$(cat guacamole-config/tmp-mysql-otpw.txt | xargs)"   # xargs to remove trailing whitespace
 echo "otpw_file_size: $otpw_file_size"
 echo "The OTWP:       $otpw"
 
