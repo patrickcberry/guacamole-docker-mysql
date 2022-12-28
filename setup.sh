@@ -80,9 +80,9 @@ echo "The OTWP:       $otpw"
 # ##############################################
 # Change mySQL root user password
 
-docker exec -i ras-mysql mysql --connect-expired-password -u root --password="$otpw" -e "EXIT;"
+docker exec -i ras-mysql mysql --connect-expired-password -u root --password=""$otpw"" -e "EXIT;"
 #docker exec -i ras-mysql mysql --connect-expired-password -u root --password="$otpw" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$mysql_password'; FLUSH PRIVILEGES; EXIT;"
-echo docker exec -i ras-mysql mysql --connect-expired-password -u root --password="$otpw" -e "EXIT;"
+echo docker exec -i ras-mysql mysql --connect-expired-password -u root --password=""$otpw"" -e "EXIT;"
 
 # ##############################################
 # Create Guacamole database
